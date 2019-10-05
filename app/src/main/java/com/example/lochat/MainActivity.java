@@ -25,13 +25,16 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
 
     Button mLocationButton;
-    TextView mTextView;
+    TextView mAddressTextView;
+    TextView mCityTextView;
+    TextView mPostalTextView;
 
     LocationManager locationManager;
     String provider;
     final int PERMISSION_REQUEST_CODE = 7171;
     double latitude;
     double longitude;
+    String city;
     String postalCode;
 
 
@@ -53,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mLocationButton = (Button) findViewById(R.id.buttonGetLocation);
-        mTextView = (TextView) findViewById(R.id.LocationText);
+        mAddressTextView = (TextView) findViewById(R.id.LocationText);
+        mCityTextView = (TextView) findViewById(R.id.CityText);
+        mPostalTextView = (TextView) findViewById(R.id.PostalText);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 double longitude = Double.parseDouble(strings[0].split(",")[1]);
                 String response;
                 HttpHandler http = new HttpHandler();
-                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?latlng=%.4f,%.4f&sensor=false&key=AIzaSyB8Ur4e8Z57G9TgIna0Nrr4tQiYJz5SDIM ",latitude,longitude);
+                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?latlng=%.4f,%.4f&result_type=postal_code&sensor=false&key=AIzaSyB8Ur4e8Z57G9TgIna0Nrr4tQiYJz5SDIM ",latitude,longitude);
                 response = http.GetHTTP(url);
                 return response;
             }
@@ -126,10 +131,13 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             try{
                 JSONObject jsonObject = new JSONObject(s);
-
                 String address = ((JSONArray)jsonObject.get("results")).getJSONObject(0).get("formatted_address").toString();
 
-                mTextView.setText(address);
+                JSONObject results = ((JSONArray)jsonObject.get("results")).getJSONObject(0);
+                postalCode = ((JSONArray) results.get("address_components")).getJSONObject(0).get("long_name").toString();
+
+                mAddressTextView.setText("Location: " + address);
+                mPostalTextView.setText("Postal: " + postalCode);
 
             } catch (JSONException e) {
                 e.printStackTrace();

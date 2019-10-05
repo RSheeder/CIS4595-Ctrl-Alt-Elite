@@ -8,7 +8,9 @@
 
     <Button
         android:id="@+id/buttonGetLocation"
-        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get Location Info" />
 
@@ -19,6 +21,22 @@
         android:layout_below="@+id/buttonGetLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/CityText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LocationText"
+        android:layout_marginTop="5dp"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/PostalText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CityText"
+        android:layout_marginTop="5dp"
+        android:text="Postal:" />
 
 
 </RelativeLayout>
