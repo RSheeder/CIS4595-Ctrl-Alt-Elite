@@ -1,13 +1,150 @@
 package com.example.lochat;
 
+import android.Manifest;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button mLocationButton;
+    TextView mAddressTextView;
+    TextView mCityTextView;
+    TextView mPostalTextView;
+
+    LocationManager locationManager;
+    String provider;
+    final int PERMISSION_REQUEST_CODE = 7171;
+    double latitude;
+    double longitude;
+    String city;
+    String postalCode;
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getLocation();
+                }
+                break;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mLocationButton = (Button) findViewById(R.id.buttonGetLocation);
+        mAddressTextView = (TextView) findViewById(R.id.LocationText);
+        mCityTextView = (TextView) findViewById(R.id.CityText);
+        mPostalTextView = (TextView) findViewById(R.id.PostalText);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            }, PERMISSION_REQUEST_CODE);
+
+        } else {
+            getLocation();
+        }
+
+        mLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Location myLocation = locationManager.getLastKnownLocation(provider);
+                latitude = myLocation.getLatitude();
+                longitude = myLocation.getLongitude();
+
+                new GetLocation().execute(String.format("%.4f,%.4f",latitude,longitude));
+            }
+        });
+    }
+
+    private void getLocation() {
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        provider = locationManager.getBestProvider(new Criteria(), false);
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        final Location location = locationManager.getLastKnownLocation(provider);
+        if(location == null)
+            Log.e("Error", "LOCATION: NULL");
+    }
+
+    private class GetLocation extends AsyncTask<String,Void,String> {
+
+        ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mDialog.setMessage("Please wait...");
+            mDialog.setCanceledOnTouchOutside(false);
+            mDialog.show();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            try{
+                double latitude =  Double.parseDouble(strings[0].split(",")[0]);
+                double longitude = Double.parseDouble(strings[0].split(",")[1]);
+                String response;
+                HttpHandler http = new HttpHandler();
+                String url = String.format("https://maps.googleapis.com/maps/api/geocode/json?latlng=%.4f,%.4f&result_type=postal_code&sensor=false&key=AIzaSyB8Ur4e8Z57G9TgIna0Nrr4tQiYJz5SDIM ",latitude,longitude);
+                response = http.GetHTTP(url);
+                return response;
+            }
+            catch (Exception e)
+            {
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            try{
+                JSONObject jsonObject = new JSONObject(s);
+                String address = ((JSONArray)jsonObject.get("results")).getJSONObject(0).get("formatted_address").toString();
+
+                JSONObject results = ((JSONArray)jsonObject.get("results")).getJSONObject(0);
+                postalCode = ((JSONArray) results.get("address_components")).getJSONObject(0).get("long_name").toString();
+
+                mAddressTextView.setText("Location: " + address);
+                mPostalTextView.setText("Postal: " + postalCode);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            if(mDialog.isShowing())
+                mDialog.dismiss();
+        }
     }
 }
