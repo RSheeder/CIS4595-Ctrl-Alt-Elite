@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1066174685779",
+    "firebase_url": "https://cis4595-ctrl-alt-elite.firebaseio.com",
+    "project_id": "cis4595-ctrl-alt-elite",
+    "storage_bucket": "cis4595-ctrl-alt-elite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066174685779:android:6e231cdf62dd8f0cde9ca6",
+        "android_client_info": {
+          "package_name": "com.example.lochat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066174685779-nlmmlp7dgjt9ek1kai4r5kjiva7b1app.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lochat",
+            "certificate_hash": "c079f1ffbdcaed171d080fd760820a8a7c8d7336"
+          }
+        },
+        {
+          "client_id": "1066174685779-qpjl80qru4dtj3sr614pcdeog3dg5ej0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbJnMtO-IQ_dFU_fNdVclMM4mk7DyX82Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066174685779-qpjl80qru4dtj3sr614pcdeog3dg5ej0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
