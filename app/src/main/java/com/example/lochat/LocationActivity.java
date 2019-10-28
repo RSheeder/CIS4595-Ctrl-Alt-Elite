@@ -22,7 +22,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class LocationActivity extends AppCompatActivity {
 
     Button mLocationButton;
     TextView mAddressTextView;
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     private class GetLocation extends AsyncTask<String,Void,String> {
 
-        ProgressDialog mDialog = new ProgressDialog(MainActivity.this);
+        ProgressDialog mDialog = new ProgressDialog(LocationActivity.this);
 
         @Override
         protected void onPreExecute() {
