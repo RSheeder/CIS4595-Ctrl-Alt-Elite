@@ -53,7 +53,7 @@ public class LocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_location);
 
         mLocationButton = (Button) findViewById(R.id.buttonGetLocation);
         mAddressTextView = (TextView) findViewById(R.id.LocationText);
