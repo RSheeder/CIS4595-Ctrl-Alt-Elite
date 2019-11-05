@@ -25,6 +25,7 @@ import org.json.JSONObject;
 public class LocationActivity extends AppCompatActivity {
 
     Button mLocationButton;
+    Button mMessengerButton;
     TextView mAddressTextView;
     TextView mCityTextView;
     TextView mPostalTextView;
@@ -59,6 +60,7 @@ public class LocationActivity extends AppCompatActivity {
         mAddressTextView = (TextView) findViewById(R.id.LocationText);
         mCityTextView = (TextView) findViewById(R.id.CityText);
         mPostalTextView = (TextView) findViewById(R.id.PostalText);
+        mMessengerButton = findViewById(R.id.messenger);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -71,12 +73,21 @@ public class LocationActivity extends AppCompatActivity {
             getLocation();
         }
 
+        mMessengerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
+
         mLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Location myLocation = locationManager.getLastKnownLocation(provider);
-                latitude = myLocation.getLatitude();
-                longitude = myLocation.getLongitude();
+                try {
+                    Location myLocation = locationManager.getLastKnownLocation(provider);
+                    latitude = myLocation.getLatitude();
+                    longitude = myLocation.getLongitude();
+                }
+                catch(SecurityException e) {}
 
                 new GetLocation().execute(String.format("%.4f,%.4f",latitude,longitude));
             }
