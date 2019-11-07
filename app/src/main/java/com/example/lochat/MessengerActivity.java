@@ -1,14 +1,15 @@
 package com.example.lochat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MessengerActivity extends AppCompatActivity {
+public class MessengerActivity extends Activity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messenger);
         final String chatId = "32566";
