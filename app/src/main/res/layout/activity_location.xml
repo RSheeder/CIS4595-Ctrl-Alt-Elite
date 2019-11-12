@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LocationActivity">
 
+
     <Button
         android:id="@+id/buttonGetLocation"
         android:layout_width="wrap_content"
@@ -37,6 +38,21 @@
         android:layout_below="@+id/CityText"
         android:layout_marginTop="5dp"
         android:text="Postal:" />
+
+    <TextView
+        android:id="@+id/SelectUsernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PostalText"
+        android:layout_marginTop="20dp"
+        android:text="Select Username: " />
+
+    <EditText
+        android:id="@+id/UsernameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/PostalText"
+        android:layout_toRightOf="@+id/SelectUsernameText" />
 
     <Button
         android:id="@+id/messenger"

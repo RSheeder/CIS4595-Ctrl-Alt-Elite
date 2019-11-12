@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
@@ -30,6 +31,7 @@ public class LocationActivity extends AppCompatActivity {
     TextView mAddressTextView;
     TextView mCityTextView;
     TextView mPostalTextView;
+    EditText mUsernameText;
 
     LocationManager locationManager;
     String provider;
@@ -38,6 +40,7 @@ public class LocationActivity extends AppCompatActivity {
     double longitude;
     String city;
     String postalCode;
+    String username;
 
 
 
@@ -62,6 +65,7 @@ public class LocationActivity extends AppCompatActivity {
         mCityTextView = (TextView) findViewById(R.id.CityText);
         mPostalTextView = (TextView) findViewById(R.id.PostalText);
         mMessengerButton = findViewById(R.id.messenger);
+        mUsernameText = (EditText) findViewById(R.id.UsernameEditText);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -76,6 +80,7 @@ public class LocationActivity extends AppCompatActivity {
 
         mMessengerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                username = mUsernameText.getText().toString();
                 openMessenger();
             }
         });
@@ -97,6 +102,11 @@ public class LocationActivity extends AppCompatActivity {
 
     public void openMessenger() {
         Intent intent = new Intent(this, MessengerActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("postalCode", postalCode);
+
+        bundle.putString("username", username);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
