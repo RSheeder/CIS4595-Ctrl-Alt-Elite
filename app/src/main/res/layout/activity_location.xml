@@ -68,5 +68,15 @@
         android:layout_marginBottom="-269dp"
         android:text="Messenger" />
 
+    <Button
+        android:id="@+id/sign_Out_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="141dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/buttonGetLocation"
+        android:text="SignOut" />
+
 
 </RelativeLayout>

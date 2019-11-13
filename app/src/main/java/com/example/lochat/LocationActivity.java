@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +30,7 @@ public class LocationActivity extends AppCompatActivity {
 
     Button mLocationButton;
     Button mMessengerButton;
+    Button mSignoutButton;
     TextView mAddressTextView;
     TextView mCityTextView;
     TextView mPostalTextView;
@@ -60,6 +63,7 @@ public class LocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
+        mSignoutButton = (Button) findViewById(R.id.sign_Out_button);
         mLocationButton = (Button) findViewById(R.id.buttonGetLocation);
         mAddressTextView = (TextView) findViewById(R.id.LocationText);
         mCityTextView = (TextView) findViewById(R.id.CityText);
@@ -96,6 +100,14 @@ public class LocationActivity extends AppCompatActivity {
                 catch(SecurityException e) {}
 
                 new GetLocation().execute(String.format("%.4f,%.4f",latitude,longitude));
+            }
+        });
+
+        mSignoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(LocationActivity.this, LogInActivity.class));
             }
         });
     }

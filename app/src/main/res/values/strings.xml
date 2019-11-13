@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Lochat</string>
+    <string name="lochat_text">LOCHAT</string>
+    <string name="ask_credentials">Please Type Email and Password to Register. You will be sent verification via Email</string>
+    <string name="ask_login_credentials">Please Type Username and Password</string>
+    <string name="ask_user_name">Username</string>
+    <string name="ask_email_register">Email</string>
+    <string name="ask_password_register">Password</string>
+    <string name="register_button">Register</string>
+    <string name="login_button">Login</string>
+    <string name="already_registered_text">Already Registered? Log in here!</string>
+    <string name="create_registration_link">Dont Have an email Login? register email HERE!</string>
+    <string name="choose_register_text">Choose a method of registration.</string>
+    <string name="email_button">Email</string>
+    <string name="google_button">Google</string>
+    <string name="facebook_button">Facebook</string>
 </resources>

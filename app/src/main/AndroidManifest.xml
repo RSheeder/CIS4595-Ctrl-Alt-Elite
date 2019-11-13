@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LocationActivity">
+        <activity android:name=".LogInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +26,9 @@
 
         </activity>
 
-        <activity android:name=".MessengerActivity"></activity>
+        <activity android:name=".MessengerActivity"/>
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".EmailAuthenticationActivity" />
 
     </application>
 
