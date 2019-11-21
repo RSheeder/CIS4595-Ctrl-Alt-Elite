@@ -18,8 +18,10 @@ public class MessengerActivity extends Activity {
         setContentView(R.layout.activity_messenger);
         String postalCode = getIntent().getExtras().getString("postalCode");
         String username = getIntent().getExtras().getString("username");
+        String topic = getIntent().getExtras().getString("topic");
         Log.i(TAG, "Postal Code from bundle is: " +  postalCode + "\n"
-                       + "Username from bundle is: " + username);
+                       + "Username from bundle is: " + username + "\n"
+                       + "Topic from bundle is: " + topic);
         final String chatId = "32566";
         final String userID = "U1-Bob";
 
