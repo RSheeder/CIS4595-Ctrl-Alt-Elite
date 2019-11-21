@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/PostalText"
         android:layout_marginTop="20dp"
-        android:text="Select Username: " />
+        android:text="Select Chatroom Username: " />
 
     <EditText
         android:id="@+id/UsernameEditText"
@@ -53,6 +53,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/PostalText"
         android:layout_toRightOf="@+id/SelectUsernameText" />
+
+    <TextView
+        android:id="@+id/SelectTopicText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SelectUsernameText"
+        android:layout_marginTop="20dp"
+        android:text="Select Topic: " />
+
+    <Spinner
+        android:id="@+id/topicSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UsernameEditText"
+        android:layout_toRightOf="@id/SelectTopicText" />
 
     <Button
         android:id="@+id/messenger"

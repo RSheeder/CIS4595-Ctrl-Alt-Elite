@@ -14,4 +14,10 @@
     <string name="email_button">Email</string>
     <string name="google_button">Google</string>
     <string name="facebook_button">Facebook</string>
+    
+    <string-array name="Topics">
+        <item>General</item>
+        <item>Food</item>
+        <item>Entertainment</item>
+    </string-array>
 </resources>

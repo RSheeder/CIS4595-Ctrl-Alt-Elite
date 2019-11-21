@@ -15,8 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -35,6 +37,7 @@ public class LocationActivity extends AppCompatActivity {
     TextView mCityTextView;
     TextView mPostalTextView;
     EditText mUsernameText;
+    Spinner mTopicSpinner;
 
     LocationManager locationManager;
     String provider;
@@ -44,6 +47,7 @@ public class LocationActivity extends AppCompatActivity {
     String city;
     String postalCode;
     String username;
+    String topic;
 
 
 
@@ -70,6 +74,10 @@ public class LocationActivity extends AppCompatActivity {
         mPostalTextView = (TextView) findViewById(R.id.PostalText);
         mMessengerButton = findViewById(R.id.messenger);
         mUsernameText = (EditText) findViewById(R.id.UsernameEditText);
+        mTopicSpinner = (Spinner) findViewById(R.id.topicSpinner);
+        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(LocationActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.Topics));
+        mAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mTopicSpinner.setAdapter(mAdapter);
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -85,6 +93,7 @@ public class LocationActivity extends AppCompatActivity {
         mMessengerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 username = mUsernameText.getText().toString();
+                topic = mTopicSpinner.getSelectedItem().toString();
                 openMessenger();
             }
         });
@@ -116,8 +125,8 @@ public class LocationActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MessengerActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("postalCode", postalCode);
-
         bundle.putString("username", username);
+        bundle.putString("topic", topic);
         intent.putExtras(bundle);
         startActivity(intent);
     }
