@@ -22,8 +22,8 @@ public class MessengerActivity extends Activity {
         Log.i(TAG, "Postal Code from bundle is: " +  postalCode + "\n"
                        + "Username from bundle is: " + username + "\n"
                        + "Topic from bundle is: " + topic);
-        final String chatId = "32566";
-        final String userID = "U1-Bob";
+        final String chatId = postalCode + ":" + topic;
+        final String userID = username;
 
 
         TextView mTextView = findViewById(R.id.textView);
