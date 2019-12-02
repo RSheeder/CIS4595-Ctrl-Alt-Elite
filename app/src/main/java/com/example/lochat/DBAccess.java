@@ -46,7 +46,7 @@ public class DBAccess {
         ref.child(childName).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() == null) { ref1.setValue(childName); }
+                if (snapshot.getValue() == null) { ref1.child(childName).setValue(childName); }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
