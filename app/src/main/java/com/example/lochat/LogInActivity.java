@@ -164,8 +164,10 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mFirebaseAuth.getCurrentUser();
-
+                            startActivity(new Intent(LogInActivity.this, LocationActivity.class));
                             Toast.makeText(LogInActivity.this,"Authentication Success", Toast.LENGTH_LONG).show();
+                            finish();
+                            
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
