@@ -63,18 +63,17 @@ The team will developing and designing a location based chat room service to con
 		Implement Filters for Chat Topics - Completed
 	
 ### E. Project process review (2)
-	
-	The team was using Agile Development processes, the SCRUM process. This process completes its work within incremental builds to be delivered within a set amount of weeks. SCRUM typically involves different events during and after its main cycles known as Sprints. These events for the team included:
-		
-	Sprint Planning - Sprint planning involves the planning sessions for the team's development cycles. The Sprint Planning has the goal of determining the goals of the next cycle, including developer goals, project requirements, tools to be used, potential ways of how the team will be creating the software. The sprint planning usually lasts 1 week.
-		
-	Sprint - The Sprint when the majority of the development occurs. This is when the design of the software and goals of the project from the previous Planning phase, are created. A typical Sprint will last from around 2 weeks, to 1 month.
-		
-	Daily SCRUM - The daily SCRUM is a short daily meeting for the development team to discuss project ideas and goals, as well as plan objectives for the next day of development. A daily SCRUM are short in duration, and are a quick approximately 15 minute session.
-		
-	Sprint Review - A sprint review is conducted at the end of each sprint cycle. During this phase the team will fully deploy and discuss the work which was completed during the previous sprint. 
-		
-	Sprint Retrospection - A sprint retrospection occurs after the Sprint Review is completed, and is a quick meeting around 1 hour to 3 hours. The purpose of this meeting is to discuss the goals and objectives from the previous sprint, and determine what went well for the Sprint, and what went wrong, also to discuss what could be improved in the future.
+The team was using Agile Development processes, the SCRUM process. This process completes its work within incremental builds to be delivered within a set amount of weeks. SCRUM typically involves different events during and after its main cycles known as Sprints. These events for the team included:
+
+* **Sprint Planning** - Sprint planning involves the planning sessions for the team's development cycles. The Sprint Planning has the goal of determining the goals of the next cycle, including developer goals, project requirements, tools to be used, potential ways of how the team will be creating the software. The sprint planning usually lasts 1 week.
+
+* **Sprint** - The Sprint when the majority of the development occurs. This is when the design of the software and goals of the project from the previous Planning phase, are created. A typical Sprint will last from around 2 weeks, to 1 month.
+
+* **Daily SCRUM** - The daily SCRUM is a short daily meeting for the development team to discuss project ideas and goals, as well as plan objectives for the next day of development. A daily SCRUM are short in duration, and are a quick approximately 15 minute session.
+
+* **Sprint Review** - A sprint review is conducted at the end of each sprint cycle. During this phase the team will fully deploy and discuss the work which was completed during the previous sprint.
+ 		
+* **Sprint Retrospection** - A sprint retrospection occurs after the Sprint Review is completed, and is a quick meeting around 1 hour to 3 hours. The purpose of this meeting is to discuss the goals and objectives from the previous sprint, and determine what went well for the Sprint, and what went wrong, also to discuss what could be improved in the future.
 	
 ### F. Work to be done (1)
 The project could see with minor improvements to various features within the software. this includes:
