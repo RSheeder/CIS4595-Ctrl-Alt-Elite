@@ -10,7 +10,7 @@ The project is aimed to connect users within a close area, and allow them discus
 
 
 ### B. Final Requirements and comparison with initial requirements (2)
-The team will developing and designing a location based chat room service to connect users within a local scale. Initially the project was designed to have its users be entirely anonymous, however a user authentication system was added. The user's personal information will not be publicly displayed to other users in order to protect their privacy.
+The team will developing and designing a location based chat room service to connect users within a local scale. Initially the project was designed to have its users be entirely anonymous, however a user authentication system was added. The user's personal information will not be publicly displayed to other users in order to protect their privacy. We initially had a requirement for viewing the history of a chatroom and flagging messages within a chat. Both of these requirements did not make it into the final requirements.
 	
 	
 
@@ -61,6 +61,8 @@ The team will developing and designing a location based chat room service to con
 		Messaging System - Partially completed during Sprint 1, Completed during Sprint 2
 		User Interface Improvements - In Progress
 		Implement Filters for Chat Topics - Completed
+	The only difference between the results being shown and our expectations is that we did not finish implemeting a save and
+	flag feature for the messages.
 	
 ### E. Project process review (2)
 The team was using Agile Development processes, the SCRUM process. This process completes its work within incremental builds to be delivered within a set amount of weeks. SCRUM typically involves different events during and after its main cycles known as Sprints. These events for the team included:
@@ -81,6 +83,7 @@ The project could see with minor improvements to various features within the sof
 * UI Themes and Improvements. 
 * Separation of individual messages into separate objects for more visual customization.
 * Chats currently do not support non text inputs.
+* Add a message flag and save feature
  
 
 ### 2. Manuals (4)
